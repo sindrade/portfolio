@@ -8,8 +8,8 @@
 * [Declaração do Problema](#declaração-do-problema)
 * [Conjunto de dados](#conjunto-de-dados)
 * [Perguntas do estudo de caso](#👜-perguntas-do-estudo-de-caso)
-* soluções
-* Limitações
+<!-- * soluções
+* Limitações -->
 
 ## Declaração do problema
 Danny quer usar os dados para responder a algumas perguntas simples sobre seus clientes, especialmente sobre seus padrões de visita, quanto dinheiro gastaram e também quais itens de menu são seus favoritos. Ter essa conexão mais profunda com seus clientes o ajudará a oferecer uma experiência melhor e mais personalizada para seus clientes fiéis.
@@ -42,7 +42,7 @@ GROUP BY
 
 **Resposta:** Os clientes A, B e C gastaram US$ 76, US$ 74 e US$ 36 respectivamente.
 
-### 1. Quantas vezes cada cliente visitou o restaurante?
+### 2. Quantas vezes cada cliente visitou o restaurante?
 ```sql
 SELECT 
 	customer_id, 
