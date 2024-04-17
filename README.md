@@ -1,4 +1,6 @@
-# 🍜 Estudo de caso - Danny's Diner
+# SQL
+
+## 🍜 Estudo de caso - Danny's Diner
 
 <img src="https://github.com/sindrade/portfolio/assets/24964847/1cab1f74-ef55-488f-880b-2ad729237afc" width="400" height="400" />
 
