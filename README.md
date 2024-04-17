@@ -6,8 +6,8 @@
 
 ## Índice
 * [Declaração do Problema](#declaração-do-problema)
-* Conjunto de dados
-* Perguntas do estudo de caso
+* [Conjunto de dados](#conjunto-de-dados)
+* [Perguntas do estudo de caso](#👜-perguntas-do-estudo-de-caso)
 * soluções
 * Limitações
 
@@ -21,7 +21,7 @@ SQL Server
 O conjunto de dados do projeto foi baixado deste [site](https://www.db-fiddle.com/f/2rM8RAnq7h5LLDTzZiRWcd/138) [LINK EXTERNO]
 
 
-## Perguntas do estudo de caso
+## 👜 Perguntas do estudo de caso
 ### 1. Qual o valor total que cada cliente gastou no restaurante?
 ```sql
 SELECT
@@ -40,4 +40,27 @@ GROUP BY
 | B | 74 |
 | C | 36 |
 
-**Resultado:** Os clientes A, B e C gastaram US$ 76, US$ 74 e US$ 36 respectivamente.
+**Resposta:** Os clientes A, B e C gastaram US$ 76, US$ 74 e US$ 36 respectivamente.
+
+### 1. Quantas vezes cada cliente visitou o restaurante?
+```sql
+SELECT 
+	customer_id, 
+	COUNT(DISTINCT order_date) AS [No. de Dias]
+FROM 
+	sales
+GROUP BY customer_id;
+```
+**Resposta:** 
+| customer_id | No. de Visitas |
+| ---------- | ---------- |
+| A | 4 |
+| B | 6 |
+| C | 2 |
+
+* Cliente A vistou 4 vezes.
+* Cliente B visitou 6 vezes.
+* Cliente C visitou 2 vezes.
+
+
+
