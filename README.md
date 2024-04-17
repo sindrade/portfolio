@@ -7,7 +7,7 @@
 ## Índice
 * [Declaração do Problema](#declaração-do-problema)
 * [Conjunto de dados](#conjunto-de-dados)
-* [Perguntas do estudo de caso](#👜-perguntas-do-estudo-de-caso)
+* [Perguntas do estudo de caso](#-perguntas-do-estudo-de-caso)
 <!-- * soluções
 * Limitações -->
 
