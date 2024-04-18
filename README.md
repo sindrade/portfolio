@@ -10,16 +10,21 @@
 * [Perguntas do estudo de caso](#-perguntas-do-estudo-de-caso)
 <!-- * soluções
 * Limitações -->
+<br>
 
 ## Declaração do problema
 Danny quer usar os dados para responder a algumas perguntas simples sobre seus clientes, especialmente sobre seus padrões de visita, quanto dinheiro gastaram e também quais itens de menu são seus favoritos. Ter essa conexão mais profunda com seus clientes o ajudará a oferecer uma experiência melhor e mais personalizada para seus clientes fiéis.
 
+<br>
+
 ## Ferramentas utilizadas
 SQL Server
+<br>
 
 ## Conjunto de dados
 O conjunto de dados do projeto foi baixado deste [site](https://www.db-fiddle.com/f/2rM8RAnq7h5LLDTzZiRWcd/138) [LINK EXTERNO]
-
+<br><br>
+<hr>
 
 ## 👜 Perguntas do estudo de caso
 ### 1. Qual o valor total que cada cliente gastou no restaurante?
@@ -42,17 +47,19 @@ GROUP BY
 
 **Resposta:** Os clientes A, B e C gastaram US$ 76, US$ 74 e US$ 36 respectivamente.
 
+<hr>
+
 ### 2. Quantas vezes cada cliente visitou o restaurante?
 ```sql
 SELECT 
-	customer_id, 
-	COUNT(DISTINCT order_date) AS [No. de Dias]
+  customer_id AS [ID Cliente], 
+  COUNT(DISTINCT order_date) AS [No. de Dias]
 FROM 
-	sales
+  sales
 GROUP BY customer_id;
 ```
 **Resposta:** 
-| customer_id | No. de Visitas |
+| ID Cliente | No. de Visitas |
 | ---------- | ---------- |
 | A | 4 |
 | B | 6 |
@@ -62,5 +69,43 @@ GROUP BY customer_id;
 * Cliente B visitou 6 vezes.
 * Cliente C visitou 2 vezes.
 
+<hr>
 
+### 3. Qual foi o primeiro item do cardápio adquirido por cada cliente?
 
+```sql
+WITH Ordered_Sales AS (
+  SELECT 
+    s.customer_id, 
+    s.order_date, 
+    m.product_name,
+    DENSE_RANK() OVER (
+      PARTITION BY s.customer_id 
+      ORDER BY s.order_date) AS purchase_rank
+  FROM 
+    sales s
+  INNER JOIN 
+    menu m ON s.product_id = m.product_id
+)
+SELECT 
+  customer_id AS [ID do Cliente], 
+  product_name AS [Nome do Produto]
+FROM 
+  Ordered_Sales
+WHERE 
+  purchase_rank = 1
+GROUP BY 
+  customer_id, product_name;
+```  
+
+**Resultado:**
+| ID do Cliente | Nome do Produto |
+| --- | --- |
+| A | curry |
+| A | sushi | 
+| B | curry |
+| C | ramen | 
+
+O cliente ‘A’ fez dois pedidos em sua primeira compra, incluindo curry e sushi, o cliente’ B’ comprou curry e o cliente ‘C’ ramen.
+
+<hr>
